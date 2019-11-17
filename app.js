@@ -1,29 +1,13 @@
 const skills = [
-    'HTML',
-    'CSS',
-    'SCSS',
+    'HTML/CSS',
     'JavaScript',
-    'jQuery',
-    'Node.js',
-    'React.js',
+    'ReactJs',
+    'NodeJs',
     'MongoDB',
-    'Git',
-    'GitHub',
-    'C++',
+    'Git/GitHub',
+    'SASS',
     'C language',
-    'pHp',
-    'Java',
-    'Problem Solving',
-    'Creativity',
-    'Decision Making',
-    'Leadership',
-    'Time Management',
-    'Linux',
-    'Windows',
-    'Bootstrap',
-    'Soft skills',
-    'MS Office',
-    'Adobe Photshop'
+    'C++',
 ];
 
 const experiences = [
@@ -31,13 +15,15 @@ const experiences = [
         'employee': 'Department of Visual Media, BITS Pilani',
         'title': 'Frontend Web Developer',
         'start': 'Aug-2018',
-        'description': 'Department of Visual Media (DVM) is one of the most renowned department of BITS Pilani which manages and controls all the technical aspects of all three fests of BITS Pilani'
+        'end': 'Present',
+        'description': 'Manages the technical aspects of all three festivals of BITS Pilani.'
     },
     {
         'employee': 'Birla Institute of Technology and Science, Pilani',
         'title': 'Teaching Assistant (Software Development and Educational Technology)',
         'start': 'Aug-2019',
-        'description': 'The Software Development and Educational Technology (SDET) division of BITS Pilani works on managing the websites, portals, apps and other software related technologies of BITS Pilani. And as a part of the team my job is to build the official website for all four campuses of BITS Pilani.'
+        'end': 'Present',
+        'description': 'Manages various portals, website and other vital internet and intranet services. Also provides certified classes of software development and data science.'
     }
 ];
 
@@ -63,15 +49,48 @@ const educations = [
 
 const projects = [
     {
-        'title': 'ikc-deal(backend)',
-        'description': 'The project was a private project of a BITS alumni. The goal of the project was to create the backend of the ikc- deal mobile app with NodeJs and deploy it on aws. ikc-deal is a mobile application that provides various service like shopping, affiliate marketing, auction, mobile recharge and an inbuilt wallet. The project was done by two JavaScript developers in about 1.5 months.',
-        'link': 'https://github.com/chirag-singhal/ikc-deal'
+        'title': "OASIS'19 - Wallet Web App(frontend)",
+        'description': 'Web application to facilitate client-vendor interaction on food stalls present in one of the largest inter-collegiate cultural fests of India.',
+        'GitHub Repo': 'https://github.com/mukul0596/oasis-2019-wallet/',
+        'Web url': 'https://objective-hawking-ea0fd0.netlify.com/'
     },
     {
-        'title': 'BITS Pilani Website',
-        'description': 'The project is to build the official website of Birla Institute of Technology and Science (BITS) along with a content management system (CMS). The project is currently in progress under the professor Yashwardhan Sharma of BITS Pilani. The team working on the project consists of 4 members 2 backend and 2 frontend developer. The backend of the project us written in django and the frontend is written with HTML, CSS, jQuery and vanilla JS. My role is of a frontend developer.',
-        'link': 'https://github.com/rohitrajhans/BITS-website'
-    }
+        'title': "Official BOSM Website",
+        'description': 'Official main website for one of the largest inter-collegiate sports fests of India, hosted by BITS Pilani (Pilani Campus).',
+        'GitHub Repo': 'https://github.com/dvm-bitspilani/bosm-2019-main/',
+        'Web url': 'https://www.bits-bosm.org/'
+    },
+    {
+        'title': "Official OASIS Website",
+        'description': 'Official main website for one of the largest inter-collegiate cultural fests of India, hosted by BITS Pilani (Pilani Campus).',
+        'GitHub Repo': 'https://github.com/dvm-bitspilani/oasis-2019-main/',
+        'Web url': 'https://www.bits-oasis.org/'
+    },
+    {
+        'title': "Weather Website(full stack)",
+        'description': 'Personal project for getting weather details.',
+        'GitHub Repo': 'https://github.com/mukul0596/weather-website/',
+        'Web url': 'https://mukul0596-weather-application.herokuapp.com/',
+        'tags': ['Personal Project']
+    },
+    {
+        'title': "Burger Builder Web App",
+        'description': 'Personal project for ordering your own customized burger.',
+        'GitHub Repo': 'https://github.com/mukul0596/burger-builder-v2.0/',
+        'Web url': 'https://mukul0596.github.io/burger-builder-v2.0/index.html/',
+        'tags': ['Personal Project']
+    },
+    {
+        'title': "IKC-Deal(backend)",
+        'description': 'The goal of the project is to develop the backend of the IKC Deal mobile app with NodeJs. The app contains shopping, auction, inbuilt wallet and affiliate marketing features.',
+        'App url': 'https://play.google.com/store/apps/details?id=org.ikc.ikc_deal/',
+        'tags': ['Private Paid Project']
+    },
+    {
+        'title': "BITS Pilani - Official Website (frontend)",
+        'description': 'As part of the Software Development and Educational Technology department, the official website of BITS Pilani is under development by a team of 5 students including me.',
+        'tags': ['Under Development ', 'Private']
+    },
 ];
 
 
@@ -148,6 +167,8 @@ const appendEducations = () => {
     });
 }
 
+const typeOfProjectLinks = ['GitHub Repo', 'Web url', 'App url']
+
 const appendProjects = () => {
     projects.map(project => {
         const div = document.createElement('div');
@@ -160,11 +181,27 @@ const appendProjects = () => {
         description.innerHTML = project.description;
         description.className = 'description';
         div.appendChild(description);
-        const link = document.createElement('a');
-        link.innerHTML = project.link;
-        link.href = project.link;
-        link.className = 'link';
-        div.appendChild(link);
+
+        typeOfProjectLinks.map(link => {
+            if (project[link]) {
+                const linkTo = document.createElement('a');
+                linkTo.innerHTML = link;
+                linkTo.href = project[link];
+                linkTo.className = 'link';
+                div.appendChild(linkTo);
+                div.appendChild(document.createElement('br'));
+            }
+        });
+
+        if (project.tags) {
+            project.tags.map(tagName => {
+                const tag = document.createElement('span');
+                tag.innerHTML = '[' + tagName + ']';
+                tag.className = 'tag';
+                div.appendChild(tag);
+            });
+        }
+        
         document.getElementsByClassName('projects')[0].appendChild(div);
     });
 }

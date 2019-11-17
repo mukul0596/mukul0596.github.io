@@ -3,48 +3,29 @@
     margin: auto;
     width: 800px;
     box-sizing: border-box;
-    font-family: sans-serif;
-    color: #333333;
-}
-
-header {
-    width: 100%;
-    padding: 8px;
-    color: white;
-    background-color: teal;
-    font-weight: bold;
-    font-size: 1.25rem;
-    margin: 8px auto;
-    box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
+    color: #333333;
 }
 
 .content {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+    align-content: flex-start;
 }
 
-.left {
-    width: 34%;
+.content > div {
+    margin: 20px 0;
 }
 
-.right {
-    width: 64%;
-}
-
-.align > div {
-    width: 100%;
-    padding: 8px 0;
-    font-size: 0.75rem;
-}
-
-.left > div {
-    border-bottom: 2px solid teal;
+.content > div:not(.personal-info) {
+    padding-left: 150px;
 }
 
 .personal-info > img {
-    width: 70%;
+    width: 20%;
+    float: right;
 }
 
 .personal-info > .info {
@@ -74,21 +55,23 @@ header {
     transform: rotateY(180deg);
 }
 
-.skills > div {
-    margin: 8px 0;
-}
-
 .head {
     color: teal;
     font-size: 1rem;
+    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    margin-bottom: 8px;
 }
 
-.objective > .head {
-    margin-bottom: 8px;
+.head:not(.name) {
+    width: calc(100% + 150px);
+    transform: translate(-150px);
+}
+
+.personal-info > .head {
+    font-size: 1.25rem;
 }
 
 .head i {
@@ -109,7 +92,7 @@ hr {
 }
 
 .experiences > .experience {
-    margin: 8px 0;
+    margin: 12px 0;
     width: 100%;
 }
 
@@ -144,7 +127,7 @@ hr {
 }
 
 .projects > .project {
-    margin: 8px 0;
+    margin: 16px 0;
     width: 100%;
 }
 
@@ -165,4 +148,8 @@ hr {
 a, a:active, a:visited {
     color: #333333;
     text-decoration: none;
+}
+
+.skills, .languages {
+    line-height: 1.5;
 }
