@@ -3989,10 +3989,32 @@ input, select, textarea {
 	}
 
 	.social-icons {
-		margin-left: 0.5em;
-		margin-bottom: 0.25em;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
 	}
 
-	.social-icons a {
+	.social-icon {
+		margin-left: 0.75em;
+		margin-bottom: 0.4em;
+	}
+
+	.social-icon a {
 		font-size: 2rem;
+	}
+
+	@media (max-width: 800px) {
+		.social-icons {
+			flex-direction: row;
+			justify-content: space-between;
+		}
+
+		.social-icon {
+			margin-left: 0;
+		}
+
+		.social-icon a {
+			font-size: 1.75rem;
+		}
 	}
