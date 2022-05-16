@@ -2612,6 +2612,11 @@ input, select, textarea {
 			.image.main img {
 				width: 100%;
 			}
+	.my-image {
+		width: 100%;
+		border-radius: 50%;
+		border: 4px solid #ffffff;
+	}
 
 /* List */
 
@@ -3104,7 +3109,6 @@ input, select, textarea {
 			-ms-justify-content: center;
 			justify-content: center;
 			width: 50em;
-			-ms-flex: 1;
 		}
 
 			.spotlights > section > .content > .inner {
